@@ -41,10 +41,7 @@ var updatePhelpsMemorial = function() {
     Phelps Memorial Hospital Center's address is incorrect. Find the listing, update it, and then 
     log the updated document to the console. 
    */
-   Listing.find({code:'PHL'},function(err,data){
-      data.longitude = -82.348799;
-      data.latitude = 29.644592;
-      data.address = '100 Phelps Laboratory Gainesville, FL 32611'
+   Listing.findOneAndUpdate({code:'PHL'},{address:'100 Phelps Laboratory Gainesville, FL 32611', coordinates: { latitude:29.644592, longitude:-82.348799  }}, function(err,data){
       if(err) throw(err);
       console.log("Updated Info: " + data);
     })
@@ -66,3 +63,4 @@ removeCable();
 updatePhelpsMemorial();
 
 retrieveAllListings();
+
